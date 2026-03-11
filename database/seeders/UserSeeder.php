@@ -24,6 +24,18 @@ class UserSeeder extends Seeder
             ],
         );
 
+        // ── Usuario demo para pruebas públicas ────────────────────────────────
+        User::query()->firstOrCreate(
+            ['email' => 'demo@fulbapp.com'],
+            [
+                'name'     => 'Demo user',
+                'avatar'   => 'https://api.dicebear.com/7.x/avataaars/svg?seed=demo',
+                'age'      => 30,
+                'position' => 'mediocampista',
+                'password' => Hash::make('123456'),
+            ],
+        );
+
         // ── Jugadores (mismos que el mock del frontend) ────────────────────────
         // El orden importa: los GameMatchSeeder y MatchPlayerSeeder usan estos IDs.
         // id=2: mock-current  id=3: u1  id=4: u2 ... id=18: u16
